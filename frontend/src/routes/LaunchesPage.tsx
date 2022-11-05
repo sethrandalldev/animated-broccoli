@@ -3,12 +3,19 @@ import { Launch } from "../types";
 
 const LaunchesPage = () => {
   let [launch, setLaunch] = useState<Launch | null>(null);
+  let [launches, setLaunches] = useState<Array<Launch>>([]);
   useEffect(() => {
     fetch("https://api.spacexdata.com/v5/launches/latest")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
         setLaunch(data);
+      });
+    fetch("https://api.spacexdata.com/v5/launches")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setLaunches(data);
       });
   }, []);
   return launch ? (
@@ -25,6 +32,31 @@ const LaunchesPage = () => {
             ? "Successful"
             : "Failure"}
         </p>
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Result</th>
+            <th>Launch Date</th>
+            <th>Precision</th>
+          </tr>
+          {launches.map((l) => {
+            return (
+              <tr>
+                <td>{l.name}</td>
+                <td>
+                  Result:{" "}
+                  {l.upcoming
+                    ? "Launch Upcoming"
+                    : l.success
+                    ? "Successful"
+                    : "Failure"}
+                </td>
+                <td>{l.date_local}</td>
+                <td>{l.date_precision}</td>
+              </tr>
+            );
+          })}
+        </table>
       </div>
     </div>
   ) : (

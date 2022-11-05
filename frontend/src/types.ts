@@ -12,4 +12,5 @@ export interface Launch {
   success: Boolean;
   date_local: string;
   name: string;
+  date_precision: string;
 }
