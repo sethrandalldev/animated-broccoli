@@ -1,4 +1,5 @@
 export interface Launch {
+  id: string;
   links: {
     patch: {
       small: string;

@@ -5,6 +5,7 @@ import App from "./App";
 import LoginPage from "./routes/LoginPage";
 import LaunchesPage from "./routes/LaunchesPage";
 import "./index.css";
+import LaunchPage from "./routes/LaunchPage";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: "/launches",
     element: <LaunchesPage />,
+  },
+  {
+    path: "/launches/:id",
+    element: <LaunchPage />,
   },
 ]);
 

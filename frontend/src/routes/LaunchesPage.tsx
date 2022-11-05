@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Launch } from "../types";
+import { useNavigate } from "react-router-dom";
 
 const LaunchesPage = () => {
+  let navigate = useNavigate();
   let [launch, setLaunch] = useState<Launch | null>(null);
   let [launches, setLaunches] = useState<Array<Launch>>([]);
   useEffect(() => {
@@ -32,16 +34,19 @@ const LaunchesPage = () => {
             ? "Successful"
             : "Failure"}
         </p>
-        <table>
+        <table className="rounded-lg border-2 border-light">
           <tr>
             <th>Name</th>
             <th>Result</th>
             <th>Launch Date</th>
             <th>Precision</th>
           </tr>
-          {launches.map((l) => {
+          {launches.map((l, i) => {
             return (
-              <tr>
+              <tr
+                className={i % 2 === 0 ? "bg-white" : "bg-light"}
+                onClick={() => navigate(`/launches/${l.id}`)}
+              >
                 <td>{l.name}</td>
                 <td>
                   Result:{" "}
