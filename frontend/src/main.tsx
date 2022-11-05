@@ -6,6 +6,7 @@ import LoginPage from "./routes/LoginPage";
 import LaunchesPage from "./routes/LaunchesPage";
 import "./index.css";
 import LaunchPage from "./routes/LaunchPage";
+import Layout from "./components/Layout";
 
 const router = createBrowserRouter([
   {
@@ -18,11 +19,19 @@ const router = createBrowserRouter([
   },
   {
     path: "/launches",
-    element: <LaunchesPage />,
+    element: (
+      <Layout>
+        <LaunchesPage />
+      </Layout>
+    ),
   },
   {
     path: "/launches/:id",
-    element: <LaunchPage />,
+    element: (
+      <Layout>
+        <LaunchPage />
+      </Layout>
+    ),
   },
 ]);
 
