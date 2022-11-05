@@ -4,6 +4,7 @@ export interface Launch {
     patch: {
       small: string;
     };
+    youtube_id: string;
   };
   crew: Array<{
     crew: string;

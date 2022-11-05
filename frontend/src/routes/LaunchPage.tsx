@@ -27,6 +27,15 @@ const LaunchesPage = () => {
             ? "Successful"
             : "Failure"}
         </p>
+        <iframe
+          width="560"
+          height="315"
+          src={`https://www.youtube.com/embed/${launch.links.youtube_id}`}
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          frameBorder="0"
+          allowFullScreen
+        ></iframe>
       </div>
     </div>
   ) : (
